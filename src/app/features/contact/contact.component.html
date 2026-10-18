@@ -1,0 +1,322 @@
+<div
+  class="modal-overlay"
+  *ngIf="isOpen"
+  (click)="closeModal()"
+>
+
+  <div
+    class="contact-modal"
+    (click)="preventClose($event)"
+  >
+
+    <!-- Decorative glow -->
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <!-- Close Button -->
+    <button
+      type="button"
+      class="close-button"
+      (click)="closeModal()"
+      aria-label="Close contact form"
+    >
+      ×
+    </button>
+
+    <!-- Header -->
+    <div class="modal-header">
+
+      <div class="header-icon">
+        <span>✦</span>
+      </div>
+
+      <div>
+        <p class="small-heading">LET'S CONNECT</p>
+
+        <h2>
+          Let's Work
+          <span>Together.</span>
+        </h2>
+
+        <p class="header-description">
+          Have a project in mind? Tell me a little about it
+          and I'll get back to you soon.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- Success Message -->
+    <div
+      class="success-message"
+      *ngIf="submitSuccess"
+    >
+      <div class="success-icon">✓</div>
+
+      <div>
+        <strong>Message sent successfully!</strong>
+        <p>Thank you for reaching out. I'll get back to you soon.</p>
+      </div>
+    </div>
+
+
+    <!-- Error Message -->
+    <div
+      class="error-message"
+      *ngIf="submitError"
+    >
+      <span>!</span>
+
+      <p>
+        Something went wrong while sending your message.
+        Please try again.
+      </p>
+    </div>
+
+
+    <!-- Contact Form -->
+    <form
+      [formGroup]="contactForm"
+      (ngSubmit)="submitForm()"
+      *ngIf="!submitSuccess"
+    >
+
+      <!-- Name + Email -->
+      <div class="form-row">
+
+        <!-- Name -->
+        <div class="form-group">
+
+          <label for="name">
+            Your Name
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ◉
+            </span>
+
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Enter your name"
+              autocomplete="name"
+            />
+
+          </div>
+
+          <small
+            class="validation-error"
+            *ngIf="name.touched && name.invalid"
+          >
+            Please enter your name.
+          </small>
+
+        </div>
+
+
+        <!-- Email -->
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              @
+            </span>
+
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+
+          </div>
+
+          <small
+            class="validation-error"
+            *ngIf="email.touched && email.invalid"
+          >
+            Please enter a valid email address.
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- Phone + Service -->
+      <div class="form-row">
+
+        <!-- Phone -->
+        <div class="form-group">
+
+          <label for="phone">
+            Phone Number
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ☎
+            </span>
+
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="10-digit phone number"
+              maxlength="10"
+              autocomplete="tel"
+            />
+
+          </div>
+
+          <small
+            class="validation-error"
+            *ngIf="phone.touched && phone.invalid"
+          >
+            Enter a valid 10-digit phone number.
+          </small>
+
+        </div>
+
+
+        <!-- Service -->
+        <div class="form-group">
+
+          <label for="serviceRequested">
+            Service Required
+          </label>
+
+          <div class="input-wrapper select-wrapper">
+
+            <span class="input-icon">
+              ✦
+            </span>
+
+            <select
+              id="serviceRequested"
+              formControlName="serviceRequested"
+            >
+
+              <option value="" disabled>
+                Select a service
+              </option>
+
+              <option value="Web Development">
+                Web Development
+              </option>
+
+              <option value="Frontend Development">
+                Frontend Development
+              </option>
+
+              <option value="Backend Development">
+                Backend Development
+              </option>
+
+              <option value="Full Stack Development">
+                Full Stack Development
+              </option>
+
+              <option value="Website Redesign">
+                Website Redesign
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+          <small
+            class="validation-error"
+            *ngIf="serviceRequested.touched && serviceRequested.invalid"
+          >
+            Please select a service.
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- Project Details -->
+      <div class="form-group full-width">
+
+        <label for="projectDetails">
+          Tell Me About Your Project
+        </label>
+
+        <textarea
+          id="projectDetails"
+          formControlName="projectDetails"
+          rows="5"
+          placeholder="Tell me about your project, requirements, timeline, features, or anything else you'd like to share..."
+        ></textarea>
+
+        <div class="textarea-footer">
+
+          <small
+            class="validation-error"
+            *ngIf="projectDetails.touched && projectDetails.invalid"
+          >
+            Please provide at least 10 characters about your project.
+          </small>
+
+          <span class="character-hint">
+            {{ projectDetails.value.length || 0 }} characters
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Submit -->
+      <div class="form-footer">
+
+        <p class="privacy-text">
+          <span>🔒</span>
+          Your information will only be used to respond to your enquiry.
+        </p>
+
+        <button
+          type="submit"
+          class="submit-button"
+          [disabled]="isSubmitting"
+        >
+
+          <span *ngIf="!isSubmitting">
+            Send Message
+            <span class="arrow">→</span>
+          </span>
+
+          <span
+            class="loading-content"
+            *ngIf="isSubmitting"
+          >
+            <span class="spinner"></span>
+            Sending...
+          </span>
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

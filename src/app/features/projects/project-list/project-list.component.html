@@ -1,0 +1,1042 @@
+<section class="projects-section" id="projects">
+
+  <!-- =====================================================
+       BACKGROUND EFFECTS
+  ====================================================== -->
+
+  <div class="projects-glow glow-purple"></div>
+  <div class="projects-glow glow-cyan"></div>
+  <div class="projects-glow glow-orange"></div>
+
+  <div class="projects-grid-bg"></div>
+
+
+  <div class="container projects-container">
+
+
+    <!-- =====================================================
+         SECTION HEADER
+    ====================================================== -->
+
+    <div class="projects-header">
+
+      <div class="section-badge">
+
+        <span class="badge-dot"></span>
+
+        MY WORK
+
+        <span class="badge-line"></span>
+
+      </div>
+
+
+      <h2>
+        <span>Projects</span>
+      </h2>
+
+
+      <p>
+        Explore the different types of work I create — from modern
+        frontend interfaces and complete full-stack applications
+        to professional resume design and writing.
+      </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MANAGEMENT ACTIONS
+    ====================================================== -->
+
+    <div class="project-management">
+
+      <div class="management-heading">
+
+        <div>
+
+          <span class="management-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h3>
+            Manage Your Portfolio
+          </h3>
+
+          <p>
+            Add new projects or create categories to organize
+            your work.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="management-actions">
+
+        <!-- ADD CATEGORY -->
+
+        <button
+          type="button"
+          class="add-category-btn"
+          (click)="openCategoryModal()"
+        >
+
+          <i class="bi bi-folder-plus"></i>
+
+          <span>
+            Add Category
+          </span>
+
+        </button>
+
+
+        <!-- ADD PROJECT -->
+
+        <button
+          type="button"
+          class="add-project-btn"
+          (click)="addProject()"
+        >
+
+          <i class="bi bi-plus-circle"></i>
+
+          <span>
+            Add New Project
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CATEGORY SELECTOR
+    ====================================================== -->
+
+    <div class="category-wrapper">
+
+      <div class="category-title">
+
+        <span>
+          EXPLORE BY CATEGORY
+        </span>
+
+      </div>
+
+
+      <div class="category-toggle">
+
+
+        <!-- ALL PROJECTS -->
+
+        <button
+          type="button"
+          class="category-btn"
+          [class.active]="selectedCategoryId === null"
+          (click)="selectedCategoryId = null"
+        >
+
+          <span class="category-icon">
+
+            <i class="bi bi-grid-3x3-gap"></i>
+
+          </span>
+
+
+          <span class="category-text">
+
+            <strong>
+              All Projects
+            </strong>
+
+            <small>
+              Complete Portfolio
+            </small>
+
+          </span>
+
+
+          <span class="category-count">
+
+            {{ projects.length }}
+
+          </span>
+
+        </button>
+
+
+
+        <!-- DYNAMIC CATEGORIES -->
+
+        <button
+          *ngFor="let category of categories"
+          type="button"
+          class="category-btn"
+          [class.active]="selectedCategoryId === category.id"
+          (click)="selectCategory(category.id)"
+        >
+
+          <span class="category-icon">
+
+            <i class="bi bi-folder2-open"></i>
+
+          </span>
+
+
+          <span class="category-text">
+
+            <strong>
+              {{ category.name }}
+            </strong>
+
+            <small>
+              {{ category.description }}
+            </small>
+
+          </span>
+
+
+          <span class="category-count">
+
+            {{ getProjectCount(category.id) }}
+
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ACTIVE CATEGORY
+    ====================================================== -->
+
+    <div class="active-category">
+
+      <div class="active-category-left">
+
+        <div class="active-category-icon">
+
+          <i class="bi bi-folder2-open"></i>
+
+        </div>
+
+
+        <div>
+
+          <span class="active-label">
+            CURRENT CATEGORY
+          </span>
+
+          <h3>
+            {{ getCategoryTitle() }}
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <span class="active-project-count">
+
+        {{ filteredProjects.length }}
+
+        {{ filteredProjects.length === 1
+          ? 'Project'
+          : 'Projects'
+        }}
+
+      </span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
+
+    <div
+      class="projects-loading"
+      *ngIf="isLoadingProjects"
+    >
+
+      <div class="loading-spinner">
+
+        <i class="bi bi-arrow-repeat"></i>
+
+      </div>
+
+      <p>
+        Loading projects...
+      </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ERROR
+    ====================================================== -->
+
+    <div
+      class="projects-error"
+      *ngIf="!isLoadingProjects && errorMessage"
+    >
+
+      <i class="bi bi-exclamation-triangle"></i>
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROJECT LIST
+    ====================================================== -->
+
+    <div
+      class="projects-list"
+      *ngIf="!isLoadingProjects"
+    >
+
+
+      <!-- PROJECT CARDS -->
+
+      <app-project-card
+        *ngFor="
+          let project of filteredProjects;
+          let i = index;
+          trackBy: trackProject
+        "
+        [project]="project"
+        [index]="i"
+      >
+      </app-project-card>
+
+
+
+      <!-- EMPTY STATE -->
+
+      <div
+        class="empty-projects"
+        *ngIf="filteredProjects.length === 0"
+      >
+
+        <div class="empty-icon">
+
+          <i class="bi bi-folder2-open"></i>
+
+        </div>
+
+
+        <h3>
+          No projects yet
+        </h3>
+
+
+        <p>
+          Add your first project using the
+          <strong>Add New Project</strong>
+          button above.
+        </p>
+
+
+        <button
+          type="button"
+          class="empty-add-project"
+          (click)="addProject()"
+        >
+
+          <i class="bi bi-plus-lg"></i>
+
+          Add New Project
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       ADD CATEGORY MODAL
+  ====================================================== -->
+
+  <div
+    class="category-modal-overlay"
+    *ngIf="showCategoryModal"
+    (click)="closeCategoryModal()"
+  >
+
+    <div
+      class="category-modal"
+      (click)="preventModalClose($event)"
+    >
+
+
+      <!-- MODAL HEADER -->
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-icon">
+
+            <i class="bi bi-folder-plus"></i>
+
+          </div>
+
+
+          <div>
+
+            <span class="modal-label">
+              PROJECT MANAGEMENT
+            </span>
+
+            <h3>
+              Add New Category
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          (click)="closeCategoryModal()"
+          [disabled]="isAddingCategory"
+        >
+
+          <i class="bi bi-x-lg"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- MODAL BODY -->
+
+      <div class="modal-body">
+
+        <p class="modal-description">
+
+          Create a category to organize your projects
+          on the portfolio.
+
+        </p>
+
+
+        <div class="form-group">
+
+          <label for="categoryName">
+
+            Category Name
+
+            <span>*</span>
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-folder"></i>
+
+            <input
+              id="categoryName"
+              type="text"
+              [(ngModel)]="categoryName"
+              placeholder="e.g. Web Development"
+              maxlength="100"
+              [disabled]="isAddingCategory"
+              (keyup.enter)="addCategory()"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+          class="form-message error-message"
+          *ngIf="categoryError"
+        >
+
+          <i class="bi bi-exclamation-circle"></i>
+
+          {{ categoryError }}
+
+        </div>
+
+
+
+        <!-- SUCCESS -->
+
+        <div
+          class="form-message success-message"
+          *ngIf="categorySuccess"
+        >
+
+          <i class="bi bi-check-circle"></i>
+
+          {{ categorySuccess }}
+
+        </div>
+
+      </div>
+
+
+
+      <!-- MODAL FOOTER -->
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="closeCategoryModal()"
+          [disabled]="isAddingCategory"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="save-category-btn"
+          (click)="addCategory()"
+          [disabled]="isAddingCategory"
+        >
+
+          <span *ngIf="!isAddingCategory">
+
+            <i class="bi bi-check2"></i>
+
+            Add Category
+
+          </span>
+
+
+          <span *ngIf="isAddingCategory">
+
+            <i class="bi bi-arrow-repeat spinning"></i>
+
+            Adding...
+
+          </span>
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       ADD PROJECT MODAL
+  ====================================================== -->
+
+  <div
+    class="project-modal-overlay"
+    *ngIf="showProjectModal"
+    (click)="closeProjectModal()"
+  >
+
+    <div
+      class="project-modal"
+      (click)="preventProjectModalClose($event)"
+    >
+
+
+      <!-- MODAL HEADER -->
+
+      <div class="modal-header">
+
+        <div class="modal-title-area">
+
+          <div class="modal-icon project-modal-icon">
+
+            <i class="bi bi-plus-circle"></i>
+
+          </div>
+
+
+          <div>
+
+            <span class="modal-label">
+              PROJECT MANAGEMENT
+            </span>
+
+            <h3>
+              Add New Project
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          (click)="closeProjectModal()"
+          [disabled]="isAddingProject"
+        >
+
+          <i class="bi bi-x-lg"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- MODAL BODY -->
+
+      <div class="modal-body project-modal-body">
+
+        <p class="modal-description">
+
+          Add your project details, technologies and links
+          to display it in your portfolio.
+
+        </p>
+
+
+
+        <!-- PROJECT NAME -->
+
+        <div class="form-group">
+
+          <label for="projectName">
+
+            Project Name
+
+            <span>*</span>
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-kanban"></i>
+
+            <input
+              id="projectName"
+              type="text"
+              [(ngModel)]="projectName"
+              placeholder="e.g. CartLane"
+              maxlength="150"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PROJECT CATEGORY -->
+
+        <div class="form-group">
+
+          <label for="projectCategory">
+
+            Project Category
+
+            <span>*</span>
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-folder2-open"></i>
+
+            <select
+              id="projectCategory"
+              [(ngModel)]="projectCategoryId"
+              [disabled]="isAddingProject"
+            >
+
+              <option [ngValue]="null">
+                Select Category
+              </option>
+
+
+              <option
+                *ngFor="let category of categories"
+                [ngValue]="category.id"
+              >
+
+                {{ category.name }}
+
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PROJECT DESCRIPTION -->
+
+        <div class="form-group">
+
+          <label for="projectDescription">
+
+            Project Description
+
+            <span>*</span>
+
+          </label>
+
+
+          <div class="input-wrapper textarea-wrapper">
+
+            <i class="bi bi-card-text"></i>
+
+            <textarea
+              id="projectDescription"
+              [(ngModel)]="projectDescription"
+              placeholder="Describe your project..."
+              rows="4"
+              maxlength="1000"
+              [disabled]="isAddingProject"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PROJECT IMAGE URLS -->
+
+        <div class="form-group">
+
+          <label for="projectImages">
+
+            Project Image URLs
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-image"></i>
+
+            <input
+              id="projectImages"
+              type="text"
+              [(ngModel)]="projectImages"
+              placeholder="Image URL 1, Image URL 2"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+
+          <small class="form-hint">
+
+            Add multiple image URLs separated by commas.
+
+          </small>
+
+        </div>
+
+
+
+        <!-- TECHNOLOGIES -->
+
+        <div class="form-group">
+
+          <label for="projectTechnologies">
+
+            Technologies
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-code-slash"></i>
+
+            <input
+              id="projectTechnologies"
+              type="text"
+              [(ngModel)]="projectTechnologies"
+              placeholder="Angular, Spring Boot, MySQL"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+
+          <small class="form-hint">
+
+            Separate technologies using commas.
+
+          </small>
+
+        </div>
+
+
+
+        <!-- LIVE LINK -->
+
+        <div class="form-group">
+
+          <label for="liveLink">
+
+            Live Project Link
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-globe2"></i>
+
+            <input
+              id="liveLink"
+              type="url"
+              [(ngModel)]="liveLink"
+              placeholder="https://your-project.com"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- FRONTEND GITHUB -->
+
+        <div class="form-group">
+
+          <label for="frontendGithubLink">
+
+            Frontend GitHub
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-github"></i>
+
+            <input
+              id="frontendGithubLink"
+              type="url"
+              [(ngModel)]="frontendGithubLink"
+              placeholder="https://github.com/username/frontend"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- BACKEND GITHUB -->
+
+        <div class="form-group">
+
+          <label for="backendGithubLink">
+
+            Backend GitHub
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-github"></i>
+
+            <input
+              id="backendGithubLink"
+              type="url"
+              [(ngModel)]="backendGithubLink"
+              placeholder="https://github.com/username/backend"
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- DEMO VIDEO -->
+
+        <div class="form-group">
+
+          <label for="demoVideoUrl">
+
+            Demo Video URL
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-play-circle"></i>
+
+            <input
+              id="demoVideoUrl"
+              type="url"
+              [(ngModel)]="demoVideoUrl"
+              placeholder="https://youtube.com/..."
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- DOCUMENTATION -->
+
+        <div class="form-group">
+
+          <label for="documentationUrl">
+
+            Documentation URL
+
+          </label>
+
+
+          <div class="input-wrapper">
+
+            <i class="bi bi-file-earmark-text"></i>
+
+            <input
+              id="documentationUrl"
+              type="url"
+              [(ngModel)]="documentationUrl"
+              placeholder="https://..."
+              [disabled]="isAddingProject"
+            />
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+          class="form-message error-message"
+          *ngIf="projectError"
+        >
+
+          <i class="bi bi-exclamation-circle"></i>
+
+          {{ projectError }}
+
+        </div>
+
+
+
+        <!-- SUCCESS -->
+
+        <div
+          class="form-message success-message"
+          *ngIf="projectSuccess"
+        >
+
+          <i class="bi bi-check-circle"></i>
+
+          {{ projectSuccess }}
+
+        </div>
+
+      </div>
+
+
+
+      <!-- MODAL FOOTER -->
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="closeProjectModal()"
+          [disabled]="isAddingProject"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="save-project-btn"
+          (click)="saveProject()"
+          [disabled]="isAddingProject"
+        >
+
+          <span *ngIf="!isAddingProject">
+
+            <i class="bi bi-check2"></i>
+
+            Add Project
+
+          </span>
+
+
+          <span *ngIf="isAddingProject">
+
+            <i class="bi bi-arrow-repeat spinning"></i>
+
+            Adding...
+
+          </span>
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</section>

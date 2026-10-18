@@ -1,0 +1,864 @@
+/* =========================================================
+   NAVBAR
+   Purple Neon • Navy Blue • Starlight • Glassmorphism
+   ========================================================= */
+
+:host {
+  display: block;
+}
+
+
+/* =========================================================
+   MAIN NAVBAR
+   ========================================================= */
+
+.portfolio-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 78px;
+
+  z-index: 1000;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 12, 35, 0.90),
+      rgba(18, 12, 48, 0.84)
+    );
+
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(139, 92, 246, 0.18);
+
+  box-shadow:
+    0 8px 35px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(124, 58, 237, 0.06);
+
+  transition: all 0.3s ease;
+}
+
+
+/* =========================================================
+   GLOWING BOTTOM LINE
+   ========================================================= */
+
+.portfolio-navbar::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -1px;
+  left: 8%;
+  right: 8%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.45),
+      rgba(34, 211, 238, 0.35),
+      rgba(124, 58, 237, 0.45),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px rgba(124, 58, 237, 0.35);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.navbar-container {
+  height: 100%;
+
+  display: flex !important;
+  flex-direction: row !important;
+
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+
+  white-space: nowrap;
+
+  transition: transform 0.3s ease;
+}
+
+
+.brand:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOGO GLOWING ORB
+   ========================================================= */
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #a78bfa,
+      #7c3aed 45%,
+      #312e81 100%
+    );
+
+  border: 1px solid rgba(196, 181, 253, 0.45);
+
+  box-shadow:
+    0 0 12px rgba(124, 58, 237, 0.65),
+    0 0 28px rgba(124, 58, 237, 0.22);
+}
+
+
+/* Inner light */
+
+.brand-mark::before {
+  content: "";
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 8px #ffffff,
+    0 0 15px #c4b5fd,
+    0 0 22px #8b5cf6;
+}
+
+
+/* Orbit ring */
+
+.brand-mark::after {
+  content: "";
+
+  position: absolute;
+
+  width: 42px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(167, 139, 250, 0.25);
+
+  transform: rotate(-25deg);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.brand-text {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 2px;
+
+  white-space: nowrap;
+}
+
+
+.brand-name {
+  font-size: 19px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.4px;
+
+  color: #f5f3ff;
+
+  text-shadow:
+    0 0 12px rgba(196, 181, 253, 0.18);
+}
+
+
+.brand-role {
+  font-size: 17px;
+
+  font-weight: 600;
+
+  color: #a78bfa;
+
+  text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.65);
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+   ========================================================= */
+
+.navbar-menu {
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 25px;
+
+  margin-left: auto;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   NAVIGATION LIST
+
+   IMPORTANT:
+   Bootstrap normally gives .navbar-nav a column layout.
+   We explicitly force ROW layout here.
+   ========================================================= */
+
+.navbar-nav {
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  list-style: none;
+
+  flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   NAV ITEM
+   ========================================================= */
+
+.nav-item {
+  position: relative;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.nav-link {
+  position: relative;
+
+  display: inline-flex !important;
+
+  flex-direction: row !important;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 9px 10px;
+
+  color: #aaa9c5 !important;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  border-radius: 9px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.nav-link i {
+  font-size: 13px;
+
+  color: #777593;
+
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.nav-link:hover {
+  color: #f5f3ff !important;
+
+  background:
+    rgba(124, 58, 237, 0.09);
+
+  transform: translateY(-1px);
+}
+
+
+.nav-link:hover i {
+  color: #a78bfa;
+
+  text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.7);
+}
+
+
+/* =========================================================
+   BOTTOM HOVER GLOW
+   ========================================================= */
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 3px;
+
+  width: 0;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8b5cf6,
+      #22d3ee
+    );
+
+  box-shadow:
+    0 0 8px rgba(139, 92, 246, 0.75);
+
+  transition: width 0.3s ease;
+}
+
+
+.nav-link:hover::after {
+  width: 55%;
+}
+
+
+/* =========================================================
+   CONTACT BUTTON
+   ========================================================= */
+
+.contact-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  color: #ffffff !important;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.9),
+      rgba(79, 70, 229, 0.85)
+    );
+
+  border: 1px solid rgba(167, 139, 250, 0.38);
+
+  box-shadow:
+    0 0 15px rgba(124, 58, 237, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.contact-btn i {
+  font-size: 13px;
+
+  transition: transform 0.25s ease;
+}
+
+
+.contact-btn:hover {
+  color: #ffffff !important;
+
+  transform: translateY(-2px);
+
+  border-color: rgba(196, 181, 253, 0.7);
+
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.42),
+    0 0 35px rgba(34, 211, 238, 0.08);
+}
+
+
+.contact-btn:hover i {
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================================
+   MOBILE TOGGLE
+   ========================================================= */
+
+.custom-toggler {
+  display: none;
+
+  width: 43px;
+  height: 40px;
+
+  padding: 8px;
+
+  border: 1px solid rgba(139, 92, 246, 0.3);
+
+  border-radius: 10px;
+
+  background:
+    rgba(20, 15, 48, 0.65);
+
+  box-shadow:
+    0 0 15px rgba(124, 58, 237, 0.08);
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+
+.custom-toggler span {
+  display: block;
+
+  width: 20px;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a78bfa,
+      #67e8f9
+    );
+
+  box-shadow:
+    0 0 7px rgba(139, 92, 246, 0.5);
+
+  transition: all 0.3s ease;
+}
+
+
+.custom-toggler:hover {
+  border-color: rgba(167, 139, 250, 0.6);
+
+  box-shadow:
+    0 0 18px rgba(124, 58, 237, 0.2);
+}
+
+
+/* =========================================================
+   STARLIGHT EFFECT
+   ========================================================= */
+
+.portfolio-navbar::before {
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  right: 18%;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    40px 8px 0 rgba(255, 255, 255, 0.65),
+    105px 20px 0 rgba(167, 139, 250, 0.7),
+    180px 2px 0 rgba(103, 232, 249, 0.55),
+    260px 28px 0 rgba(255, 255, 255, 0.5),
+    330px 10px 0 rgba(167, 139, 250, 0.55);
+
+  opacity: 0.55;
+
+  animation: starPulse 4s ease-in-out infinite;
+}
+
+
+@keyframes starPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLET / SMALL LAPTOP
+   901px - 1150px
+   ========================================================= */
+
+@media (max-width: 1150px) and (min-width: 901px) {
+
+  .navbar-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .navbar-menu {
+    gap: 10px;
+  }
+
+
+  .navbar-nav {
+    gap: 0;
+  }
+
+
+  .nav-link {
+    padding: 8px 6px;
+
+    font-size: 12px;
+
+    gap: 5px;
+  }
+
+
+  .nav-link i {
+    display: none;
+  }
+
+
+  .contact-btn {
+    padding: 9px 12px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .portfolio-navbar {
+    height: 70px;
+  }
+
+
+  .navbar-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  /* Show hamburger */
+
+  .custom-toggler {
+    display: flex;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+  }
+
+
+  /* Mobile menu */
+
+  .navbar-menu {
+    position: absolute;
+
+    top: 70px;
+
+    left: 12px;
+    right: 12px;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(10, 14, 38, 0.96),
+        rgba(27, 16, 58, 0.94)
+      );
+
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(139, 92, 246, 0.22);
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.45),
+      0 0 30px rgba(124, 58, 237, 0.10);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-12px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+
+  .navbar-menu.menu-open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+
+  /* Mobile navigation list */
+
+  .navbar-nav {
+    width: 100%;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch;
+
+    gap: 3px;
+  }
+
+
+  .nav-item {
+    width: 100%;
+  }
+
+
+  .nav-link {
+    width: 100%;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    justify-content: flex-start;
+
+    padding: 12px 13px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+  }
+
+
+  .nav-link i {
+    display: inline-block;
+
+    width: 20px;
+
+    font-size: 14px;
+  }
+
+
+  .nav-link:hover {
+    background:
+      rgba(124, 58, 237, 0.13);
+  }
+
+
+  /* Mobile contact */
+
+  .contact-btn {
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 11px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .navbar-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+
+  .brand-role {
+    font-size: 15px;
+  }
+
+
+  .brand-mark {
+    width: 31px;
+    height: 31px;
+  }
+
+
+  .navbar-menu {
+    left: 10px;
+    right: 10px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .brand-name {
+    font-size: 15px;
+  }
+
+
+  .brand-role {
+    font-size: 14px;
+  }
+
+
+  .brand {
+    gap: 8px;
+  }
+
+
+  .brand-mark {
+    width: 29px;
+    height: 29px;
+  }
+
+
+  .custom-toggler {
+    width: 40px;
+    height: 38px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .portfolio-navbar::before {
+    animation: none;
+  }
+
+
+  .nav-link,
+  .contact-btn,
+  .brand,
+  .custom-toggler span {
+    transition: none;
+  }
+}

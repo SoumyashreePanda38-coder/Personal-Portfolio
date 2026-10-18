@@ -1,0 +1,153 @@
+<nav class="navbar portfolio-navbar">
+
+  <div class="container navbar-container">
+
+    <!-- =========================
+         BRAND
+    ========================== -->
+    <a
+      class="navbar-brand brand"
+      href="#home"
+      (click)="scrollToSection('home')"
+    >
+      <span class="brand-mark">
+        <span class="brand-dot"></span>
+      </span>
+
+      <span class="brand-text">
+        <span class="brand-name">Soumyashree</span>
+        <span class="brand-role">.dev</span>
+      </span>
+    </a>
+
+
+    <!-- =========================
+         MOBILE TOGGLE
+    ========================== -->
+    <button
+      class="navbar-toggler custom-toggler"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Toggle navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+    <div
+      class="navbar-menu"
+      [class.menu-open]="isMenuOpen"
+    >
+
+      <ul class="navbar-nav">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#home"
+            (click)="scrollToSection('home')"
+          >
+            <i class="bi bi-house-door"></i>
+            <span>Home</span>
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#about"
+            (click)="scrollToSection('about')"
+          >
+            <i class="bi bi-person"></i>
+            <span>About</span>
+          </a>
+        </li>
+
+        <!-- Skills -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#skills"
+            (click)="scrollToSection('skills')"
+          >
+            <i class="bi bi-code-slash"></i>
+            <span>Skills</span>
+          </a>
+        </li>
+
+        <!-- Projects -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#projects"
+            (click)="scrollToSection('projects')"
+          >
+            <i class="bi bi-grid"></i>
+            <span>Projects</span>
+          </a>
+        </li>
+
+        <!-- Experience -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#experience"
+            (click)="scrollToSection('experience')"
+          >
+            <i class="bi bi-briefcase"></i>
+            <span>Experience</span>
+          </a>
+        </li>
+
+        <!-- Education -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#education"
+            (click)="scrollToSection('education')"
+          >
+            <i class="bi bi-mortarboard"></i>
+            <span>Education</span>
+          </a>
+        </li>
+
+        <!-- Services -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#services"
+            (click)="scrollToSection('services')"
+          >
+            <i class="bi bi-layers"></i>
+            <span>Services</span>
+          </a>
+        </li>
+
+      </ul>
+
+
+      <!-- =========================
+           CONTACT CTA
+      ========================== -->
+      <button
+        type="button"
+        class="contact-btn"
+        (click)="openContactModal('General Inquiry')"
+      >
+        <span>Let's Talk</span>
+        <i class="bi bi-arrow-up-right"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>

@@ -1,0 +1,1438 @@
+/* =========================================================
+   SERVICES SECTION
+========================================================= */
+
+.services-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 110px 0 80px;
+
+  overflow: hidden;
+
+  color: #f8f7ff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #09081c 0%,
+      #110d2d 18%,
+      #151039 48%,
+      #100d2c 78%,
+      #09081c 100%
+    );
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   SMOOTH TRANSITION FROM EXPERIENCE
+========================================================= */
+
+.services-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 180px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 25, 0.95),
+      rgba(18, 13, 48, 0.65),
+      transparent
+    );
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   BACKGROUND CONTAINER
+========================================================= */
+
+.services-background {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: -2;
+}
+
+
+/* =========================================================
+   ORANGE GLOW
+========================================================= */
+
+.services-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.42;
+}
+
+.glow-orange {
+  width: 330px;
+  height: 330px;
+
+  top: 15%;
+  left: -170px;
+
+  background:
+    rgba(249, 115, 22, 0.24);
+}
+
+
+/* =========================================================
+   CYAN GLOW
+========================================================= */
+
+.glow-cyan {
+  width: 430px;
+  height: 430px;
+
+  top: 35%;
+  right: -220px;
+
+  background:
+    rgba(34, 211, 238, 0.18);
+}
+
+
+/* =========================================================
+   VIOLET GLOW
+========================================================= */
+
+.glow-violet {
+  width: 430px;
+  height: 430px;
+
+  bottom: -170px;
+  left: 38%;
+
+  background:
+    rgba(124, 58, 237, 0.22);
+}
+
+
+/* =========================================================
+   GRID PATTERN
+========================================================= */
+
+.services-grid-pattern {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.17;
+
+  background-image:
+    linear-gradient(
+      rgba(139, 92, 246, 0.13) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(34, 211, 238, 0.10) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 80%,
+      transparent
+    );
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 80%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-container {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.services-header {
+  max-width: 900px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.section-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  color: #fb923c;
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #f97316;
+
+  box-shadow:
+    0 0 10px rgba(249, 115, 22, 0.9),
+    0 0 25px rgba(249, 115, 22, 0.5);
+}
+
+.badge-line {
+  width: 48px;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f97316,
+      #8b5cf6
+    );
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.services-header h2 {
+  margin: 0;
+
+  color: #f7f5ff;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  font-weight: 800;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.045em;
+}
+
+
+/* Gradient heading */
+
+.services-header h2 span {
+  background:
+    linear-gradient(
+      90deg,
+      #ff7a18 0%,
+      #ff4d4d 35%,
+      #d946ef 68%,
+      #8b5cf6 100%
+    );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+.services-header p {
+  max-width: 760px;
+
+  margin: 20px auto 0;
+
+  color: #aaa5c5;
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   SERVICES LIST
+========================================================= */
+
+.services-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   GLASSMORPHISM CARD
+========================================================= */
+
+.service-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  padding: 24px 24px 0;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.105),
+      rgba(255, 255, 255, 0.045)
+    );
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 18px 60px rgba(0, 0, 0, 0.30);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* top glass highlight */
+
+.service-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+
+  width: 84%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.65),
+      transparent
+    );
+
+  opacity: 0.55;
+}
+
+
+/* card glow */
+
+.service-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  top: -110px;
+  right: -80px;
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD COLORS
+========================================================= */
+
+.frontend-card {
+  border-color:
+    rgba(249, 115, 22, 0.34);
+}
+
+.frontend-card::after {
+  background:
+    rgba(249, 115, 22, 0.15);
+}
+
+
+.fullstack-card {
+  border-color:
+    rgba(34, 211, 238, 0.32);
+}
+
+.fullstack-card::after {
+  background:
+    rgba(34, 211, 238, 0.14);
+}
+
+
+.resume-card {
+  border-color:
+    rgba(139, 92, 246, 0.38);
+}
+
+.resume-card::after {
+  background:
+    rgba(139, 92, 246, 0.16);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.service-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    0 25px 70px rgba(0, 0, 0, 0.40);
+}
+
+.frontend-card:hover {
+  border-color:
+    rgba(249, 115, 22, 0.65);
+}
+
+.fullstack-card:hover {
+  border-color:
+    rgba(34, 211, 238, 0.62);
+}
+
+.resume-card:hover {
+  border-color:
+    rgba(139, 92, 246, 0.68);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.service-card-top {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 13px;
+}
+
+
+/* =========================================================
+   SERVICE ICON
+========================================================= */
+
+.service-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: #ffffff;
+
+  font-size: 1.35rem;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Frontend */
+
+.frontend-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #fb923c,
+      #f97316
+    );
+
+  box-shadow:
+    0 8px 25px rgba(249, 115, 22, 0.25);
+}
+
+
+/* Full stack */
+
+.fullstack-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #38bdf8,
+      #2563eb
+    );
+
+  box-shadow:
+    0 8px 25px rgba(37, 99, 235, 0.25);
+}
+
+
+/* Resume */
+
+.resume-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #a78bfa,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 8px 25px rgba(124, 58, 237, 0.25);
+}
+
+
+/* =========================================================
+   SERVICE BADGES
+========================================================= */
+
+.service-badge {
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  color: #ffffff;
+
+  font-size: 0.63rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+}
+
+
+/* Orange */
+
+.frontend-badge {
+  background:
+    linear-gradient(
+      135deg,
+      #fb923c,
+      #f97316
+    );
+
+  box-shadow:
+    0 5px 18px rgba(249, 115, 22, 0.25);
+}
+
+
+/* Blue */
+
+.fullstack-badge {
+  background:
+    linear-gradient(
+      135deg,
+      #3b82f6,
+      #2563eb
+    );
+
+  box-shadow:
+    0 5px 18px rgba(37, 99, 235, 0.25);
+}
+
+
+/* Violet */
+
+.resume-badge {
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6d28d9
+    );
+
+  box-shadow:
+    0 5px 18px rgba(124, 58, 237, 0.25);
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.service-card h3 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  color: #f8f7ff;
+
+  font-size: 1.55rem;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.service-description {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 54px;
+
+  margin: 9px 0 20px;
+
+  color: #aaa8c2;
+
+  font-size: 0.88rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.service-features {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  margin-bottom: 21px;
+}
+
+
+.feature-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  color: #c0bdd2;
+
+  font-size: 0.80rem;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   CHECK ICON
+========================================================= */
+
+.feature-check {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 1px;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  font-size: 0.55rem;
+}
+
+
+/* Orange */
+
+.frontend-check {
+  background: #f97316;
+
+  box-shadow:
+    0 0 12px rgba(249, 115, 22, 0.35);
+}
+
+
+/* Blue */
+
+.fullstack-check {
+  background: #2563eb;
+
+  box-shadow:
+    0 0 12px rgba(37, 99, 235, 0.35);
+}
+
+
+/* Violet */
+
+.resume-check {
+  background: #7c3aed;
+
+  box-shadow:
+    0 0 12px rgba(124, 58, 237, 0.35);
+}
+
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing-section {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: auto;
+}
+
+
+.pricing-section h4 {
+  margin: 0 0 10px;
+
+  color: #f5f3ff;
+
+  font-size: 1rem;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PRICING GRID
+========================================================= */
+
+.pricing-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   PRICING BOX
+========================================================= */
+
+.pricing-box {
+  min-height: 125px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+
+/* Frontend price */
+
+.frontend-price {
+  border-color:
+    rgba(249, 115, 22, 0.20);
+}
+
+
+/* Full stack price */
+
+.fullstack-price {
+  border-color:
+    rgba(34, 211, 238, 0.20);
+}
+
+
+/* Resume */
+
+.single-price {
+  grid-template-columns: 1fr;
+}
+
+.resume-price {
+  min-height: 125px;
+
+  border-color:
+    rgba(139, 92, 246, 0.24);
+}
+
+
+/* =========================================================
+   PRICING TEXT
+========================================================= */
+
+.pricing-name {
+  color: #f3f0ff;
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+}
+
+
+.pricing-subtitle {
+  min-height: 25px;
+
+  margin-top: 3px;
+
+  color: #9692ae;
+
+  font-size: 0.64rem;
+
+  line-height: 1.3;
+}
+
+
+.pricing-amount {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* Pricing colors */
+
+.frontend-price .pricing-amount {
+  color: #fb923c;
+}
+
+.fullstack-price .pricing-amount {
+  color: #38bdf8;
+}
+
+.resume-price .pricing-amount {
+  color: #a78bfa;
+
+  font-size: 1.25rem;
+}
+
+
+.pricing-description {
+  margin-top: 7px;
+
+  color: #918da8;
+
+  font-size: 0.64rem;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   CONTACT BUTTON
+========================================================= */
+
+.service-contact-btn {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 19px;
+
+  padding: 0 15px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+
+/* Frontend */
+
+.frontend-contact {
+  background:
+    linear-gradient(
+      90deg,
+      #f97316,
+      #fb923c
+    );
+
+  box-shadow:
+    0 8px 25px rgba(249, 115, 22, 0.20);
+}
+
+
+/* Full stack */
+
+.fullstack-contact {
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #06b6d4
+    );
+
+  box-shadow:
+    0 8px 25px rgba(37, 99, 235, 0.20);
+}
+
+
+/* Resume */
+
+.resume-contact {
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 8px 25px rgba(124, 58, 237, 0.20);
+}
+
+
+.service-contact-btn:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+}
+
+
+.service-contact-btn i:last-child {
+  transition:
+    transform 0.25s ease;
+}
+
+
+.service-contact-btn:hover i:last-child {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   NEGOTIATION TEXT
+========================================================= */
+
+.negotiation-text {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 290px;
+
+  margin: 11px auto 3px;
+
+  text-align: center;
+
+  color: #8f8ba6;
+
+  font-size: 0.63rem;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   SERVICE ILLUSTRATION
+========================================================= */
+
+.service-illustration {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  height: 170px;
+
+  margin-top: 7px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+.service-illustration img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  object-position: center bottom;
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+.service-card:hover .service-illustration img {
+  transform:
+    translateY(-4px)
+    scale(1.02);
+}
+
+
+/* =========================================================
+   CUSTOM REQUIREMENT BAR
+========================================================= */
+
+.custom-requirement {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  min-height: 90px;
+
+  margin-top: 27px;
+
+  padding: 18px 25px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 15px 45px rgba(0, 0, 0, 0.22);
+}
+
+
+/* =========================================================
+   CUSTOM ICON
+========================================================= */
+
+.custom-requirement-icon {
+  width: 50px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #a78bfa;
+
+  font-size: 1.55rem;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.14);
+
+  padding-right: 18px;
+
+  box-sizing: content-box;
+}
+
+
+/* =========================================================
+   CUSTOM CONTENT
+========================================================= */
+
+.custom-requirement-content {
+  flex: 1;
+}
+
+
+.custom-requirement-content h4 {
+  margin: 0 0 4px;
+
+  color: #f3f0ff;
+
+  font-size: 0.95rem;
+
+  font-weight: 800;
+}
+
+
+.custom-requirement-content p {
+  margin: 0;
+
+  color: #9692ad;
+
+  font-size: 0.76rem;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   CUSTOM BUTTON
+========================================================= */
+
+.custom-contact-btn {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px 18px;
+
+  border-radius: 10px;
+
+  color: #fb923c;
+
+  background:
+    rgba(249, 115, 22, 0.04);
+
+  border:
+    1px solid rgba(249, 115, 22, 0.70);
+
+  font-family: inherit;
+
+  font-size: 0.76rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.custom-contact-btn:hover {
+  color: #ffffff;
+
+  background:
+    rgba(249, 115, 22, 0.85);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(249, 115, 22, 0.20);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .services-list {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .resume-card {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .services-section {
+    padding: 85px 0 60px;
+  }
+
+
+  .services-header {
+    margin-bottom: 40px;
+  }
+
+
+  .services-header h2 {
+    font-size: 2.3rem;
+  }
+
+
+  .services-header p {
+    font-size: 0.90rem;
+  }
+
+
+  .services-list {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  .resume-card {
+    grid-column: auto;
+
+    max-width: none;
+  }
+
+
+  .service-card {
+    padding: 22px 20px 0;
+
+    border-radius: 20px;
+  }
+
+
+  .service-card h3 {
+    font-size: 1.4rem;
+  }
+
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .service-illustration {
+    height: 155px;
+  }
+
+
+  .custom-requirement {
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    padding: 20px;
+  }
+
+
+  .custom-requirement-icon {
+    width: auto;
+
+    border-right: 0;
+
+    padding-right: 0;
+  }
+
+
+  .custom-requirement-content {
+    flex: 1;
+
+    min-width: 200px;
+  }
+
+
+  .custom-contact-btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .services-header h2 {
+    font-size: 1.95rem;
+  }
+
+
+  .services-header p {
+    font-size: 0.84rem;
+  }
+
+
+  .service-card-top {
+    gap: 7px;
+  }
+
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 1.2rem;
+  }
+
+
+  .service-badge {
+    padding: 6px 9px;
+
+    font-size: 0.56rem;
+  }
+
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+
+  .feature-item {
+    font-size: 0.76rem;
+  }
+
+
+  .pricing-amount {
+    font-size: 0.98rem;
+  }
+
+
+  .service-illustration {
+    height: 140px;
+  }
+
+}

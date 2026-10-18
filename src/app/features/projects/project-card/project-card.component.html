@@ -1,0 +1,57 @@
+<div class="project-card">
+
+  <div class="project-image" *ngIf="project.imageUrls?.length">
+    <img
+      [src]="project.imageUrls[0]"
+      [alt]="project.projectName"
+    />
+  </div>
+
+  <div class="project-content">
+
+    <div class="project-category" *ngIf="project.categoryName">
+      {{ project.categoryName }}
+    </div>
+
+    <h3>{{ project.projectName }}</h3>
+
+    <p>{{ project.projectDescription }}</p>
+
+    <div class="project-technologies" *ngIf="project.technologies?.length">
+      <span
+        *ngFor="let technology of project.technologies">
+        {{ technology }}
+      </span>
+    </div>
+
+    <div class="project-actions">
+
+      <a
+        *ngIf="project.liveLink"
+        [href]="project.liveLink"
+        target="_blank"
+        rel="noopener noreferrer">
+        Live Demo
+      </a>
+
+      <a
+        *ngIf="project.frontendGithubLink"
+        [href]="project.frontendGithubLink"
+        target="_blank"
+        rel="noopener noreferrer">
+        Frontend
+      </a>
+
+      <a
+        *ngIf="project.backendGithubLink"
+        [href]="project.backendGithubLink"
+        target="_blank"
+        rel="noopener noreferrer">
+        Backend
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
